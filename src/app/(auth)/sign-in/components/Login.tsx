@@ -52,7 +52,7 @@ export function Login() {
         </div>
       </CardContent>
       <CardFooter className="grid">
-        <Button className="w-full">Create account</Button>
+        <Button className="w-full">Login</Button>
         <small className="text-center mt-4">
           Don&apos;t have an acoount?{" "}
           <Link
@@ -60,6 +60,14 @@ export function Login() {
             href={"/sign-up"}
           >
             Signup
+          </Link>
+        </small>
+        <small className="text-center mt-4">
+          <Link
+            className="underline hover:no-underline hover:text-[#22c55e]"
+            href={"/forgot-password"}
+          >
+            Forgot password?
           </Link>
         </small>
       </CardFooter>

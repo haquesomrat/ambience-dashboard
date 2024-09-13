@@ -71,6 +71,15 @@ export function DataTablePagination<TData>({
             <span className="sr-only">Go to previous page</span>
             <ChevronLeftIcon className="h-4 w-4" />
           </Button>
+          <Button variant="outline" className="h-8 w-8 p-0">
+            1
+          </Button>
+          <Button variant="outline" className="h-8 w-8 p-0">
+            2
+          </Button>
+          <Button variant="outline" className="h-8 w-8 p-0">
+            3
+          </Button>
           <Button
             variant="outline"
             className="h-8 w-8 p-0"
