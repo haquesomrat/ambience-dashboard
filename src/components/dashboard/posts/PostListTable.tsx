@@ -41,11 +41,11 @@ import { dummyPostsData } from "@/lib/fake-data";
 
 export type Posts = {
   _id: string;
-  postTitle: string;
-  PostImages: string[];
-  postBanner: string;
-  postDescription: string;
-  postSubtitle: string;
+  title: string;
+  images: string[];
+  banner: string;
+  description: string;
+  subtitle: string;
   created_by: string;
 };
 
@@ -120,7 +120,7 @@ export function PostListTable() {
       enableHiding: false,
     },
     {
-      accessorKey: "postTitle",
+      accessorKey: "title",
       header: ({ column }) => {
         return (
           <Button
@@ -133,15 +133,15 @@ export function PostListTable() {
         );
       },
       cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("postTitle")}</div>
+        <div className="lowercase">{row.getValue("title")}</div>
       ),
     },
     {
-      accessorKey: "PostImages",
+      accessorKey: "images",
       header: "Post Images",
       cell: ({ row }) => (
         <div>
-          {(row.getValue("PostImages") as string[]).map(
+          {(row.getValue("images") as string[]).map(
             (postImg: string, index: number) => (
               <Image
                 height={16}
@@ -156,31 +156,31 @@ export function PostListTable() {
       ),
     },
     {
-      accessorKey: "postBanner",
+      accessorKey: "banner",
       header: "Post Banner",
       cell: ({ row }) => (
         <div>
           <Image
             height={16}
             width={60}
-            src={row.getValue("postBanner")}
+            src={row.getValue("banner")}
             alt={`Post Banner`}
           />
         </div>
       ),
     },
     {
-      accessorKey: "postDescription",
+      accessorKey: "description",
       header: "Post Description",
       cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("postDescription")}</div>
+        <div className="lowercase">{row.getValue("description")}</div>
       ),
     },
     {
-      accessorKey: "postSubtitle",
+      accessorKey: "subtitle",
       header: "Post Subtitle",
       cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("postSubtitle")}</div>
+        <div className="lowercase">{row.getValue("subtitle")}</div>
       ),
     },
     {
