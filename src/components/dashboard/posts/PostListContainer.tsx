@@ -1,5 +1,5 @@
 import { UserContentTable } from "@/components/user-content";
-import { PostList } from "./PostList";
+import { PostListTable } from "./PostListTable";
 
 const PostListContainer = () => {
   return (
@@ -7,7 +7,7 @@ const PostListContainer = () => {
       {/* <div className="flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">Post List</h2>
       </div> */}
-      {/* <PostList /> */}
+      {/* <PostListTable /> */}
       <UserContentTable />
     </div>
   );

@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { FileUpload } from "@/components/ui/file-upload";
 
-export function AddPostForm() {
+export function UpdatePostForm() {
   const [postImages, setPostImage] = useState<File[]>([]);
   const [postBanner, setPostBanner] = useState<File[]>([]);
 

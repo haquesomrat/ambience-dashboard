@@ -44,7 +44,7 @@ export type Companies = {
   companyImg: string;
 };
 
-export function PostList() {
+export function PostListTable() {
   // Explicitly define the state type as an array of Companies
   const [companies, setCompanies] = React.useState<Companies[]>([]);
 
@@ -162,7 +162,7 @@ export function PostList() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <Link
-                href={`/dashboard/companies/${row?.original?._id}/update-company`}
+                href={`/dashboard/companies/${row?.original?._id}/update-post`}
               >
                 <DropdownMenuItem className="cursor-pointer">
                   Edit

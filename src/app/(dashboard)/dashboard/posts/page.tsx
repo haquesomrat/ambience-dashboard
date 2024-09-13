@@ -16,7 +16,7 @@ import React from "react";
 const PostsPage = () => {
   return (
     <AdminPanelLayout>
-      <ContentLayout title="Companies">
+      <ContentLayout title="All Posts">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>

@@ -12,10 +12,10 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const AddPostPage = () => {
+const ProjectsPage = () => {
   return (
     <AdminPanelLayout>
-      <ContentLayout title="Companies">
+      <ContentLayout title="Projects">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -31,13 +31,7 @@ const AddPostPage = () => {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="/dashboard/posts">Posts</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Update Post</BreadcrumbPage>
+              <BreadcrumbPage>Projects</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -47,4 +41,4 @@ const AddPostPage = () => {
   );
 };
 
-export default AddPostPage;
+export default ProjectsPage;

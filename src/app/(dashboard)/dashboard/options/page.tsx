@@ -1,6 +1,8 @@
 import AdminPanelLayout from "@/components/admin-panel/admin-panel-layout";
 import { ContentLayout } from "@/components/admin-panel/content-layout";
-import AddPostContainer from "@/components/dashboard/posts/add-post/AddPostContainer";
+import OptionsListContainer from "@/components/dashboard/options/OptionsListContainer";
+import PostListContainer from "@/components/dashboard/posts/PostListContainer";
+import PlaceholderContent from "@/components/placeholder-content";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,10 +14,10 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const AddPostPage = () => {
+const OptionsPage = () => {
   return (
     <AdminPanelLayout>
-      <ContentLayout title="Companies">
+      <ContentLayout title="All Options">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -32,19 +34,19 @@ const AddPostPage = () => {
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link href="/dashboard/posts">Posts</Link>
+                <Link href="/dashboard/companies">Options</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Update Post</BreadcrumbPage>
+              <BreadcrumbPage>All Options</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <AddPostContainer />
+        <OptionsListContainer />
       </ContentLayout>
     </AdminPanelLayout>
   );
 };
 
-export default AddPostPage;
+export default OptionsPage;

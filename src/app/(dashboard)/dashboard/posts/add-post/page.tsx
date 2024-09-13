@@ -15,7 +15,7 @@ import React from "react";
 const AddPostPage = () => {
   return (
     <AdminPanelLayout>
-      <ContentLayout title="Companies">
+      <ContentLayout title="Add Post">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>

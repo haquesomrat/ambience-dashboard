@@ -1,6 +1,8 @@
 import AdminPanelLayout from "@/components/admin-panel/admin-panel-layout";
 import { ContentLayout } from "@/components/admin-panel/content-layout";
-import AddPostContainer from "@/components/dashboard/posts/add-post/AddPostContainer";
+import PostListContainer from "@/components/dashboard/posts/PostListContainer";
+import SocialListContainer from "@/components/dashboard/socials/SocialsListContainer";
+import PlaceholderContent from "@/components/placeholder-content";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,10 +14,10 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const AddPostPage = () => {
+const SocialsPage = () => {
   return (
     <AdminPanelLayout>
-      <ContentLayout title="Companies">
+      <ContentLayout title="All Posts">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -32,19 +34,19 @@ const AddPostPage = () => {
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link href="/dashboard/posts">Posts</Link>
+                <Link href="/dashboard/companies">Socials</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Update Post</BreadcrumbPage>
+              <BreadcrumbPage>All Socials</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <AddPostContainer />
+        <SocialListContainer />
       </ContentLayout>
     </AdminPanelLayout>
   );
 };
 
-export default AddPostPage;
+export default SocialsPage;
