@@ -37,27 +37,32 @@ import {
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { dummyPostsData } from "@/lib/fake-data";
 
-export type Companies = {
+export type Posts = {
   _id: string;
-  companyName: string;
-  companyImg: string;
+  postTitle: string;
+  PostImages: string[];
+  postBanner: string;
+  postDescription: string;
+  postSubtitle: string;
+  created_by: string;
 };
 
 export function PostListTable() {
   // Explicitly define the state type as an array of Companies
-  const [companies, setCompanies] = React.useState<Companies[]>([]);
+  const [posts, setPosts] = React.useState<Posts[]>(dummyPostsData);
 
   // Fetch all companies on component mount
   React.useEffect(() => {
-    const getAllCompanies = async () => {
+    const getAllPosts = async () => {
       try {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/companies/api`
         );
         if (res.ok) {
-          const data: Companies[] = await res.json(); // Explicitly define the type of fetched data
-          setCompanies(data);
+          const data: Posts[] = await res.json(); // Explicitly define the type of fetched data
+          setPosts(data);
         } else {
           console.error("Failed to fetch companies");
         }
@@ -65,7 +70,7 @@ export function PostListTable() {
         console.error("An error occurred while fetching companies:", error);
       }
     };
-    getAllCompanies();
+    getAllPosts();
   }, []);
 
   // Handle company deletion
@@ -79,9 +84,7 @@ export function PostListTable() {
         }
       );
       if (res.ok) {
-        setCompanies((prevCompanies) =>
-          prevCompanies.filter((company) => company._id !== id)
-        );
+        setPosts((prevPosts) => prevPosts.filter((post) => post._id !== id));
         console.log("Upload successful:", await res.json());
       } else {
         console.error("Upload failed:", await res.json());
@@ -91,9 +94,9 @@ export function PostListTable() {
     }
   };
 
-  const data: Companies[] = companies;
+  const data: Posts[] = posts;
 
-  const columns: ColumnDef<Companies>[] = [
+  const columns: ColumnDef<Posts>[] = [
     {
       id: "select",
       header: ({ table }) => (
@@ -117,34 +120,74 @@ export function PostListTable() {
       enableHiding: false,
     },
     {
-      accessorKey: "companyName",
+      accessorKey: "postTitle",
       header: ({ column }) => {
         return (
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Company Name
+            Post Title
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         );
       },
       cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("companyName")}</div>
+        <div className="lowercase">{row.getValue("postTitle")}</div>
       ),
     },
     {
-      accessorKey: "companyImg",
-      header: "Company Image",
+      accessorKey: "PostImages",
+      header: "Post Images",
+      cell: ({ row }) => (
+        <div>
+          {(row.getValue("PostImages") as string[]).map(
+            (postImg: string, index: number) => (
+              <Image
+                height={16}
+                width={60}
+                key={index}
+                src={postImg}
+                alt={`Post Image ${index}`}
+              />
+            )
+          )}
+        </div>
+      ),
+    },
+    {
+      accessorKey: "postBanner",
+      header: "Post Banner",
       cell: ({ row }) => (
         <div>
           <Image
-            src={row.getValue("companyImg")}
-            alt="companny image"
             height={16}
-            width={68}
+            width={60}
+            src={row.getValue("postBanner")}
+            alt={`Post Banner`}
           />
         </div>
+      ),
+    },
+    {
+      accessorKey: "postDescription",
+      header: "Post Description",
+      cell: ({ row }) => (
+        <div className="lowercase">{row.getValue("postDescription")}</div>
+      ),
+    },
+    {
+      accessorKey: "postSubtitle",
+      header: "Post Subtitle",
+      cell: ({ row }) => (
+        <div className="lowercase">{row.getValue("postSubtitle")}</div>
+      ),
+    },
+    {
+      accessorKey: "created_by",
+      header: "Created By",
+      cell: ({ row }) => (
+        <div className="lowercase">{row.getValue("created_by")}</div>
       ),
     },
     {
@@ -161,9 +204,7 @@ export function PostListTable() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <Link
-                href={`/dashboard/companies/${row?.original?._id}/update-post`}
-              >
+              <Link href={`/dashboard/posts/${row?.original?._id}/update-post`}>
                 <DropdownMenuItem className="cursor-pointer">
                   Edit
                 </DropdownMenuItem>

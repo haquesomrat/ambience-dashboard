@@ -1,6 +1,7 @@
 import AdminPanelLayout from "@/components/admin-panel/admin-panel-layout";
 import { ContentLayout } from "@/components/admin-panel/content-layout";
 import AddPostContainer from "@/components/dashboard/posts/add-post/AddPostContainer";
+import UpdatePostContainer from "@/components/dashboard/posts/update-post/UpdatePostContainer";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,7 +13,7 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const AddPostPage = () => {
+const UpdatePostPage = () => {
   return (
     <AdminPanelLayout>
       <ContentLayout title="Companies">
@@ -41,10 +42,10 @@ const AddPostPage = () => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <AddPostContainer />
+        <UpdatePostContainer />
       </ContentLayout>
     </AdminPanelLayout>
   );
 };
 
-export default AddPostPage;
+export default UpdatePostPage;
