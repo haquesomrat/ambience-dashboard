@@ -40,7 +40,7 @@ export function Sidebar() {
                   : "translate-x-0 opacity-100"
               )}
             >
-              Student Club
+              Ambiance
             </h1>
           </Link>
         </Button>
