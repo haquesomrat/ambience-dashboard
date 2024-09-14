@@ -1,6 +1,7 @@
 import { Faq } from "@/components/dashboard/faq/FaqListTable";
 import { Posts } from "@/components/dashboard/posts/PostListTable";
 import { Projects } from "@/components/dashboard/projects/ProjectListTable";
+import { Services } from "@/components/dashboard/services/ServicesListTable";
 
 export const dummyPostsData: Posts[] = [
   {
@@ -169,5 +170,56 @@ export const dummyFaqData: Faq[] = [
     },
     createdAt: "2024-09-14T06:23:01.090Z",
     updatedAt: "2024-09-14T06:23:01.090Z",
+  },
+];
+
+export const dummyServices: Services[] = [
+  {
+    _id: "1",
+    title: "E-Commerce Website",
+    description:
+      "A fully functional e-commerce website built using React and Node.js.",
+    banner: "https://example.com/banner1.jpg",
+    thumbnail: "https://example.com/thumb1.jpg",
+    reviews: 150,
+    rating: 4.5,
+    images: [
+      "https://example.com/image1.jpg",
+      "https://example.com/image2.jpg",
+      "https://example.com/image3.jpg",
+    ],
+    created_by: "John Doe",
+  },
+  {
+    _id: "2",
+    title: "Portfolio Website",
+    description:
+      "A personal portfolio website built with Next.js and Tailwind CSS.",
+    banner: "https://example.com/banner2.jpg",
+    thumbnail: "https://example.com/thumb2.jpg",
+    reviews: 85,
+    rating: 4.7,
+    images: [
+      "https://example.com/image4.jpg",
+      "https://example.com/image5.jpg",
+      "https://example.com/image6.jpg",
+    ],
+    created_by: "Jane Smith",
+  },
+  {
+    _id: "3",
+    title: "Social Media App",
+    description:
+      "A social media application built using MERN stack (MongoDB, Express, React, Node.js).",
+    banner: "https://example.com/banner3.jpg",
+    thumbnail: "https://example.com/thumb3.jpg",
+    reviews: 230,
+    rating: 4.9,
+    images: [
+      "https://example.com/image7.jpg",
+      "https://example.com/image8.jpg",
+      "https://example.com/image9.jpg",
+    ],
+    created_by: "Alice Johnson",
   },
 ];

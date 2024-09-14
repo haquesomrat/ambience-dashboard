@@ -6,7 +6,7 @@ import React from "react";
 const OptionsListTable = () => {
   return (
     <div className="mt-10">
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <form action="">
           <div className="col-span-1 space-y-3">
             <Label htmlFor="">Site URL</Label>

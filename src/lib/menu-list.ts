@@ -80,24 +80,24 @@ export function getMenuList(pathname: string): Group[] {
             },
           ],
         },
-        {
-          href: "",
-          label: "Menus",
-          active: pathname === "/menus",
-          icon: Bookmark,
-          submenus: [
-            {
-              href: "/dashboard/menus",
-              label: "All Menus",
-              active: pathname === "/dashboard/menus",
-            },
-            {
-              href: "/dashboard/menus/new",
-              label: "New Menu",
-              active: pathname === "/dashboard/menus/new",
-            },
-          ],
-        },
+        // {
+        //   href: "",
+        //   label: "Menus",
+        //   active: pathname === "/menus",
+        //   icon: Bookmark,
+        //   submenus: [
+        //     {
+        //       href: "/dashboard/menus",
+        //       label: "All Menus",
+        //       active: pathname === "/dashboard/menus",
+        //     },
+        //     {
+        //       href: "/dashboard/menus/new",
+        //       label: "New Menu",
+        //       active: pathname === "/dashboard/menus/new",
+        //     },
+        //   ],
+        // },
         {
           href: "",
           label: "Services",
@@ -110,9 +110,9 @@ export function getMenuList(pathname: string): Group[] {
               active: pathname === "/dashboard/services",
             },
             {
-              href: "/dashboard/services/new",
-              label: "New Service",
-              active: pathname === "/dashboard/services/new",
+              href: "/dashboard/services/add-service",
+              label: "Add Service",
+              active: pathname === "/dashboard/services/add-service",
             },
           ],
         },
