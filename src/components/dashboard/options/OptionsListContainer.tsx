@@ -1,4 +1,5 @@
 import { UserContentTable } from "@/components/user-content";
+import OptionsListTable from "./OptionsListTable";
 
 const OptionsListContainer = () => {
   return (
@@ -6,7 +7,7 @@ const OptionsListContainer = () => {
       <div className="flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">Options</h2>
       </div>
-      {/* <OptionsListTable /> */}
+      <OptionsListTable />
     </div>
   );
 };

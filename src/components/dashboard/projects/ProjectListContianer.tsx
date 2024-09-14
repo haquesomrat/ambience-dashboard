@@ -1,4 +1,5 @@
 import { UserContentTable } from "@/components/user-content";
+import { ProjectListTable } from "./ProjectListTable";
 
 const ProjectListContainer = () => {
   return (
@@ -6,7 +7,7 @@ const ProjectListContainer = () => {
       <div className="flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">Projects</h2>
       </div>
-      {/* <ProjectListTable /> */}
+      <ProjectListTable />
     </div>
   );
 };

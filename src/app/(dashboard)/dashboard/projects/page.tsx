@@ -1,6 +1,7 @@
 import AdminPanelLayout from "@/components/admin-panel/admin-panel-layout";
 import { ContentLayout } from "@/components/admin-panel/content-layout";
 import AddPostContainer from "@/components/dashboard/posts/add-post/AddPostContainer";
+import ProjectListContainer from "@/components/dashboard/projects/ProjectListContianer";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -35,7 +36,7 @@ const ProjectsPage = () => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <AddPostContainer />
+        <ProjectListContainer />
       </ContentLayout>
     </AdminPanelLayout>
   );

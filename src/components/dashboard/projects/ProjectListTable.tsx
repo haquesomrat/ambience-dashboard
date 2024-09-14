@@ -37,21 +37,23 @@ import {
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { dummyPostsData } from "@/lib/fake-data";
+import { dummyProjects } from "@/lib/fake-data";
+import { DataTablePagination } from "@/components/table-pagination";
 
-export type Posts = {
+export type Projects = {
   _id: string;
-  postTitle: string;
-  PostImages: string[];
-  postBanner: string;
-  postDescription: string;
-  postSubtitle: string;
+  title: string;
+  url: string[];
+  subject: string;
+  skills: string[];
+  description: string;
+  images: string[];
   created_by: string;
 };
 
 export function ProjectListTable() {
   // Explicitly define the state type as an array of Companies
-  const [posts, setPosts] = React.useState<Posts[]>(dummyPostsData);
+  const [posts, setPosts] = React.useState<Projects[]>(dummyProjects);
 
   // Fetch all companies on component mount
   React.useEffect(() => {
@@ -61,7 +63,7 @@ export function ProjectListTable() {
           `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/companies/api`
         );
         if (res.ok) {
-          const data: Posts[] = await res.json(); // Explicitly define the type of fetched data
+          const data: Projects[] = await res.json(); // Explicitly define the type of fetched data
           setPosts(data);
         } else {
           console.error("Failed to fetch companies");
@@ -94,9 +96,9 @@ export function ProjectListTable() {
     }
   };
 
-  const data: Posts[] = posts;
+  const data: Projects[] = dummyProjects;
 
-  const columns: ColumnDef<Posts>[] = [
+  const columns: ColumnDef<Projects>[] = [
     {
       id: "select",
       header: ({ table }) => (
@@ -120,35 +122,35 @@ export function ProjectListTable() {
       enableHiding: false,
     },
     {
-      accessorKey: "postTitle",
+      accessorKey: "title",
       header: ({ column }) => {
         return (
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Post Title
+            title
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         );
       },
       cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("postTitle")}</div>
+        <div className="lowercase">{row.getValue("title")}</div>
       ),
     },
     {
-      accessorKey: "PostImages",
-      header: "Post Images",
+      accessorKey: "images",
+      header: "Images",
       cell: ({ row }) => (
         <div>
-          {(row.getValue("PostImages") as string[]).map(
-            (postImg: string, index: number) => (
+          {(row.getValue("images") as string[]).map(
+            (Img: string, index: number) => (
               <Image
                 height={16}
                 width={60}
                 key={index}
-                src={postImg}
-                alt={`Post Image ${index}`}
+                src={Img}
+                alt={`Image ${index}`}
               />
             )
           )}
@@ -170,17 +172,38 @@ export function ProjectListTable() {
       ),
     },
     {
-      accessorKey: "postDescription",
-      header: "Post Description",
+      accessorKey: "url",
+      header: "URL",
       cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("postDescription")}</div>
+        <div className="lowercase">
+          {(row.getValue("url") as string[]).map(
+            (link: string, index: number) => (
+              <a href={link} key={index}>
+                {link}
+              </a>
+            )
+          )}
+        </div>
       ),
     },
     {
-      accessorKey: "postSubtitle",
-      header: "Post Subtitle",
+      accessorKey: "skills",
+      header: "Skills",
       cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("postSubtitle")}</div>
+        <div className="lowercase">
+          {(row.getValue("skills") as string[]).map(
+            (skill: string, index: number) => (
+              <p key={index}>{skill}</p>
+            )
+          )}
+        </div>
+      ),
+    },
+    {
+      accessorKey: "description",
+      header: "Description",
+      cell: ({ row }) => (
+        <div className="lowercase">{row.getValue("description")}</div>
       ),
     },
     {
@@ -345,22 +368,7 @@ export function ProjectListTable() {
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
         <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
+          <DataTablePagination table={table} />
         </div>
       </div>
     </div>

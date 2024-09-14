@@ -38,6 +38,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { dummyPostsData } from "@/lib/fake-data";
+import { DataTablePagination } from "@/components/table-pagination";
 
 export type Posts = {
   _id: string;
@@ -345,22 +346,7 @@ export function PostListTable() {
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
         <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
+          <DataTablePagination table={table} />
         </div>
       </div>
     </div>

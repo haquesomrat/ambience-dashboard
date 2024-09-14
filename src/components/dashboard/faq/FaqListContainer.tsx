@@ -1,4 +1,5 @@
 import { UserContentTable } from "@/components/user-content";
+import { FaqListTable } from "./FaqListTable";
 
 const FaqListContainer = () => {
   return (
@@ -6,7 +7,7 @@ const FaqListContainer = () => {
       <div className="flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">FAQs</h2>
       </div>
-      {/* <FaqListTable /> */}
+      <FaqListTable />
     </div>
   );
 };
