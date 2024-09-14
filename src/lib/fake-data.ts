@@ -1,5 +1,6 @@
 import { Faq } from "@/components/dashboard/faq/FaqListTable";
 import { Posts } from "@/components/dashboard/posts/PostListTable";
+import { Profile } from "@/components/dashboard/profile/ProfileDetails";
 import { Projects } from "@/components/dashboard/projects/ProjectListTable";
 import { Services } from "@/components/dashboard/services/ServicesListTable";
 
@@ -221,5 +222,18 @@ export const dummyServices: Services[] = [
       "https://example.com/image9.jpg",
     ],
     created_by: "Alice Johnson",
+  },
+];
+
+export const dummyProfile: Profile[] = [
+  {
+    _id: "101",
+    first_name: "John",
+    last_name: "Doe",
+    email: "john.doe@example.com",
+    bio: "Full-stack developer with a passion for creating web applications.",
+    designation: "Software Engineer",
+    password: "hashedpassword123",
+    avatar: "https://github.com/shadcn.png",
   },
 ];

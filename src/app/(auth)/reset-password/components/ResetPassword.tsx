@@ -22,13 +22,13 @@ export function ResetPassword() {
         <CardDescription>Enter your email below to login</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="grid gap-2">
+        <div className="grid gap-6">
+          <div className="grid gap-2">
+            <Label htmlFor="newPassword">New Password</Label>
+            <Input id="newPassword" type="password" />
+          </div>
           <Label htmlFor="confirmPassword">Confirm Password</Label>
           <Input id="confirmPassword" type="password" />
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="newPassword">New Password</Label>
-          <Input id="newPassword" type="password" />
         </div>
       </CardContent>
       <CardFooter className="grid">

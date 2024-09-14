@@ -68,7 +68,7 @@ export function Menu({ isOpen }: MenuProps) {
                                   className={cn(isOpen === false ? "" : "mr-4")}
                                 >
                                   <Icon
-                                    className={`${active && "text-[#22c55e]"}`}
+                                    className={`${active && "text-primary"}`}
                                     size={18}
                                   />
                                 </span>
