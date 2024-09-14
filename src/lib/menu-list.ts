@@ -29,18 +29,18 @@ type Group = {
 
 export function getMenuList(pathname: string): Group[] {
   return [
-    {
-      groupLabel: "",
-      menus: [
-        {
-          href: "/",
-          label: "Dashboard",
-          active: pathname === "/dashboard",
-          icon: LayoutGrid,
-          submenus: [],
-        },
-      ],
-    },
+    // {
+    //   groupLabel: "",
+    //   menus: [
+    //     {
+    //       href: "/",
+    //       label: "Dashboard",
+    //       active: pathname === "/dashboard",
+    //       icon: LayoutGrid,
+    //       submenus: [],
+    //     },
+    //   ],
+    // },
     {
       groupLabel: "Contents",
       menus: [
@@ -172,24 +172,24 @@ export function getMenuList(pathname: string): Group[] {
         },
       ],
     },
-    {
-      groupLabel: "Settings",
-      menus: [
-        {
-          href: "/dashboard/users",
-          label: "Users",
-          active: pathname.includes("/dashboard/users"),
-          icon: Users,
-          submenus: [],
-        },
-        {
-          href: "/account",
-          label: "Account",
-          active: pathname.includes("/account"),
-          icon: Settings,
-          submenus: [],
-        },
-      ],
-    },
+    // {
+    //   groupLabel: "Settings",
+    //   menus: [
+    //     {
+    //       href: "/dashboard/users",
+    //       label: "Users",
+    //       active: pathname.includes("/dashboard/users"),
+    //       icon: Users,
+    //       submenus: [],
+    //     },
+    //     {
+    //       href: "/account",
+    //       label: "Account",
+    //       active: pathname.includes("/account"),
+    //       icon: Settings,
+    //       submenus: [],
+    //     },
+    //   ],
+    // },
   ];
 }

@@ -11,6 +11,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
+import { permanentRedirect } from "next/navigation";
 
 const data = [
   {
@@ -28,27 +29,26 @@ const data = [
 ];
 
 const DashboardPage = () => {
-  return (
-    <AdminPanelLayout>
-      <ContentLayout title="Dashboard">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="/">Home</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Dashboard</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-        {/* <PlaceholderContent /> */}
-        <DashboardOverview />
-      </ContentLayout>
-    </AdminPanelLayout>
-  );
+  return permanentRedirect("/dashboard/posts");
+  // <AdminPanelLayout>
+  //   <ContentLayout title="Dashboard">
+  //     <Breadcrumb>
+  //       <BreadcrumbList>
+  //         <BreadcrumbItem>
+  //           <BreadcrumbLink asChild>
+  //             <Link href="/">Home</Link>
+  //           </BreadcrumbLink>
+  //         </BreadcrumbItem>
+  //         <BreadcrumbSeparator />
+  //         <BreadcrumbItem>
+  //           <BreadcrumbPage>Dashboard</BreadcrumbPage>
+  //         </BreadcrumbItem>
+  //       </BreadcrumbList>
+  //     </Breadcrumb>
+  //     {/* <PlaceholderContent /> */}
+  //     <DashboardOverview />
+  //   </ContentLayout>
+  // </AdminPanelLayout>
 };
 
 export default DashboardPage;
