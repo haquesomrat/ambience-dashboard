@@ -15,7 +15,7 @@ import React from "react";
 const AddProjectPage = () => {
   return (
     <AdminPanelLayout>
-      <ContentLayout title="Add Post">
+      <ContentLayout title="Add Project">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>

@@ -67,3 +67,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+.rti--container {
+  --rti-bg: "" !important;
+  --rti-s: "0.375rem" !important;
+  --rti-border: "#808080" !important;
+}

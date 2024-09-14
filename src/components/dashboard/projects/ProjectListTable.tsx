@@ -53,27 +53,27 @@ export type Projects = {
 
 export function ProjectListTable() {
   // Explicitly define the state type as an array of Companies
-  const [posts, setPosts] = React.useState<Projects[]>(dummyProjects);
+  const [project, setPorjects] = React.useState<Projects[]>(dummyProjects);
 
   // Fetch all companies on component mount
-  React.useEffect(() => {
-    const getAllPosts = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/companies/api`
-        );
-        if (res.ok) {
-          const data: Projects[] = await res.json(); // Explicitly define the type of fetched data
-          setPosts(data);
-        } else {
-          console.error("Failed to fetch companies");
-        }
-      } catch (error) {
-        console.error("An error occurred while fetching companies:", error);
-      }
-    };
-    getAllPosts();
-  }, []);
+  // React.useEffect(() => {
+  //   const getAllPosts = async () => {
+  //     try {
+  //       const res = await fetch(
+  //         `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/companies/api`
+  //       );
+  //       if (res.ok) {
+  //         const data: Projects[] = await res.json(); // Explicitly define the type of fetched data
+  //         setPosts(data);
+  //       } else {
+  //         console.error("Failed to fetch companies");
+  //       }
+  //     } catch (error) {
+  //       console.error("An error occurred while fetching companies:", error);
+  //     }
+  //   };
+  //   getAllPosts();
+  // }, []);
 
   // Handle company deletion
   const handleDeleteCompany = async (id: String) => {
@@ -86,7 +86,9 @@ export function ProjectListTable() {
         }
       );
       if (res.ok) {
-        setPosts((prevPosts) => prevPosts.filter((post) => post._id !== id));
+        setPorjects((prevProject) =>
+          prevProject.filter((project) => project._id !== id)
+        );
         console.log("Upload successful:", await res.json());
       } else {
         console.error("Upload failed:", await res.json());
@@ -139,10 +141,54 @@ export function ProjectListTable() {
       ),
     },
     {
+      accessorKey: "url",
+      header: "URL",
+      cell: ({ row }) => (
+        <div className="lowercase">
+          {(row.getValue("url") as string[]).map(
+            (link: string, index: number) => (
+              <a className="line-clamp-1" href={link} key={index}>
+                {link}
+              </a>
+            )
+          )}
+        </div>
+      ),
+    },
+    {
+      accessorKey: "subject",
+      header: "Subject",
+      cell: ({ row }) => (
+        <div className="lowercase">{row.getValue("subject")}</div>
+      ),
+    },
+    {
+      accessorKey: "skills",
+      header: "Skills",
+      cell: ({ row }) => (
+        <div className="lowercase line-clamp-2">
+          {(row.getValue("skills") as string[]).map(
+            (skill: string, index: number) => (
+              <p key={index}>{skill},</p>
+            )
+          )}
+        </div>
+      ),
+    },
+    {
+      accessorKey: "description",
+      header: "Description",
+      cell: ({ row }) => (
+        <div className="lowercase line-clamp-2">
+          {row.getValue("description")}
+        </div>
+      ),
+    },
+    {
       accessorKey: "images",
       header: "Images",
       cell: ({ row }) => (
-        <div>
+        <div className="flex">
           {(row.getValue("images") as string[]).map(
             (Img: string, index: number) => (
               <Image
@@ -155,55 +201,6 @@ export function ProjectListTable() {
             )
           )}
         </div>
-      ),
-    },
-    {
-      accessorKey: "postBanner",
-      header: "Post Banner",
-      cell: ({ row }) => (
-        <div>
-          <Image
-            height={16}
-            width={60}
-            src={row.getValue("postBanner")}
-            alt={`Post Banner`}
-          />
-        </div>
-      ),
-    },
-    {
-      accessorKey: "url",
-      header: "URL",
-      cell: ({ row }) => (
-        <div className="lowercase">
-          {(row.getValue("url") as string[]).map(
-            (link: string, index: number) => (
-              <a href={link} key={index}>
-                {link}
-              </a>
-            )
-          )}
-        </div>
-      ),
-    },
-    {
-      accessorKey: "skills",
-      header: "Skills",
-      cell: ({ row }) => (
-        <div className="lowercase">
-          {(row.getValue("skills") as string[]).map(
-            (skill: string, index: number) => (
-              <p key={index}>{skill}</p>
-            )
-          )}
-        </div>
-      ),
-    },
-    {
-      accessorKey: "description",
-      header: "Description",
-      cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("description")}</div>
       ),
     },
     {
@@ -227,7 +224,9 @@ export function ProjectListTable() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <Link href={`/dashboard/posts/${row?.original?._id}/update-post`}>
+              <Link
+                href={`/dashboard/projects/${row?.original?._id}/update-project`}
+              >
                 <DropdownMenuItem className="cursor-pointer">
                   Edit
                 </DropdownMenuItem>
